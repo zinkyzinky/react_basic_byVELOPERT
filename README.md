@@ -164,3 +164,41 @@ MyName.defaultProps = {
 
 export default MyName;
 ```
+
+### #9 State
+
+- 컴포넌트 자기 자신이 가지고 있음.
+- 처음부터 가지고 있음.
+- 변화가 필요하면 setState() 이용하여 업데이트 가능.
+
+- state를 정의할 때는 반드시 객체여야 한다.
+
+```Shell
+state = {
+    number: 0
+}
+
+// 화살표 함수를 한 이유! 하지 않으면 this를 알기 어렵다. 소스가 복잡해짐
+
+handleIncreate = () => {
+    this.setState({
+        number: this.state.number + 1
+    })
+}
+
+// 이런 경우 this는 모름!!
+// 혹여나 사용하고 싶을 경우 , constructor 선언해줘야함.
+
+constructor(props) {
+    super(props);
+    this.handleIncreate = this.handleIncreate.bind(this);
+    this.handleDecrease = this.handleDecrease.bind(this);
+}
+
+handleIncreate() {
+    console.log(this);
+    this.setState({
+        this.state.number;
+    })
+}
+```
