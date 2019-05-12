@@ -159,7 +159,7 @@ const MyName = ({ name }) => {
 };
 
 MyName.defaultProps = {
-    name: 'Robert'
+    name: 'Robert John Downey Jr.'
 };
 
 export default MyName;
