@@ -67,3 +67,100 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 # react_basic_byVELOPERT
+
+
+### #5 ~ #7
+
+var    : 스코프가 함수 단위, 더이상 never,,,
+const  : 스코프가 블록 단위, 한번 선언 후 고정적인 값
+let    : 스코프가 블록 단위, 유동적인 값
+
+삼항연산자로 데이터 구하기, if 사용 안함, switch 사용 가능. 
+조건이 많으면 외부에서 하도록 하라...
+
+{/* && 사용해서 true인것만 표현 */}
+
+```Shell
+{ name === 'velopert!!' && <div>벨로퍼트다!!</div>} 
+
+{ name === 'Robert!!' ? '아이언맨이닷!' : '너는 누구냐!!'}
+```
+
+{/* 조건이 여러개일 경우 */}
+
+```Shell
+{
+(
+    function() {
+    if (value === 1) return <div>아이언맨 ???</div>
+    if (value === 2) return <div>벨로퍼트 ???</div>
+    if (value === 3) return <div>누구 ???</div>
+    return <div>모르겠네...</div>
+    }
+)()
+}
+```
+
+{/* 조건이 여러개일 경우 , 화살표 함수 사용 (바로 실행하는거니까 끝에 () 꼭 붙여주기) 
+    this, arguments, super 개념이 없음!!!
+*/}
+
+```Shell
+{ 
+(
+    () => {
+    if (name === 'Robert!!') return <div>아이언맨 ???</div>
+    if (name === 'velopert!!') return <div>벨로퍼트 ???</div>
+    if (name === 'Stave!!') return <div>누구 ???</div>
+    }
+)()
+}
+```
+
+### #8 Props
+
+읽기 개념
+모든 컴포넌트는 render()가 존재해야 한다.
+부모 컴포넌트가 자식 컴포넌트에게 값을 넘겨줄 때 사용.
+
+class 내부에 defaultProps 를 선언하는 것이 최신 문법
+
+1. class 내부 선언
+
+```Shell
+class MyName extends Component {
+
+    static defaultProps = {
+        name: 'RRobert John Downey Jr.'
+    }
+    render() {
+        return (
+            <div>
+                안녕하세요 ! 제 이름은 <b>{this.props.name}</b>입니다.
+            </div>
+        )
+    }
+}
+```
+
+2. class 아랫쪽
+
+
+- 함수형 컴포넌트
+  ({ name }) => 이것은 비구조 할당 문법
+  함수형 컴포넌트는 초기 마운트 속도가 (미세하게) 빠름.
+  메모리 자원도 적게 사용하는 편이라고 함!
+
+```Shell
+import React, { Component } from 'react';
+
+const MyName = ({ name }) => {
+    return <div> 안녕!! 나는 { name } 이라고 햇! </div>
+};
+
+MyName.defaultProps = {
+    name: 'Robert'
+};
+
+export default MyName;
+```
